@@ -4,9 +4,17 @@ namespace App\Http\Controllers;
 
 use App\Blog;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Helper;
 
 class BlogController extends Controller
 {
+
+    public function __construct()
+    {
+        //echo Helper::shout('now i\'m using my helper class in a controller!!');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +22,16 @@ class BlogController extends Controller
      */
     public function index()
     {
-        $blogs = Blog::All();
+       
+        if (isset($_GET['fl'])) {
+            $filter_by = $_GET['fl'];
+            $query = DB::table('blogs');
+            $query = $query->where('id', 'like', $filter_by);
+            $blogs = $query->get();
+        }else{
+            $blogs = Blog::All();
+        }
+        
         return view('blog.index',compact('blogs'));
     }
 

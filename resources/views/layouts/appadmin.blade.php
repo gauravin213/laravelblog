@@ -261,7 +261,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <!-- page script -->
 <script>
   $(function () {
-    $("#example1").DataTable();
+    /*$("#example1").DataTable();
     $('#example2').DataTable({
       "paging": true,
       "lengthChange": false,
@@ -269,12 +269,47 @@ scratch. This page gets rid of all links and provides the needed markup only.
       "ordering": true,
       "info": true,
       "autoWidth": false,
-    });
+    });*/
+
+
+
+    // Setup - add a text input to each footer cell
+    $('#example1 thead tr').clone(true).appendTo( '#example1 thead' );
+    $('#example1 thead tr:eq(1) th').each( function (i) {
+        var title = $(this).text();
+
+        console.log(title);
+
+        if (title == 'Action') {return}
+
+
+        $(this).html( '<input type="text" placeholder="Search '+title+'" />' );
+ 
+        $( 'input', this ).on( 'keyup change', function () {
+            if ( table.column(i).search() !== this.value ) {
+                table
+                    .column(i)
+                    .search( this.value )
+                    .draw();
+            }
+        } );
+    } );
+ 
+    var table = $('#example1').DataTable( {
+        orderCellsTop: true,
+        fixedHeader: true
+    } );
+
+
   });
 </script>
 
 
-
+<style type="text/css">
+  thead input {
+        width: 100%;
+    }
+</style>
 
 
 

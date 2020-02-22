@@ -56,7 +56,92 @@
     </div>
     <!-- /.content-header -->
 
+
+
+
 <section class="content">
+
+
+	<!---->
+	<div class="card card-secondary">
+              <div class="card-header">
+                <h3 class="card-title">Custom Elements</h3>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                <form role="form">
+
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <!-- select -->
+                      <div class="form-group">
+                        <label>Custom Select</label>
+                        <select class="custom-select" name="title">
+                          <option value="1">option 1</option>
+                          <option>option 2</option>
+                          <option>option 3</option>
+                          <option>option 4</option>
+                          <option>option 5</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-sm-3">
+                      <div class="form-group">
+                        <label>Custom Select Disabled</label>
+                        <select class="custom-select">
+                          <option>option 1</option>
+                          <option>option 2</option>
+                          <option>option 3</option>
+                          <option>option 4</option>
+                          <option>option 5</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-sm-3">
+                      <div class="form-group">
+                        <label>Custom Select Disabled</label>
+                        <select class="custom-select">
+                          <option>option 1</option>
+                          <option>option 2</option>
+                          <option>option 3</option>
+                          <option>option 4</option>
+                          <option>option 5</option>
+                        </select>
+                      </div>
+                    </div>
+
+                    <div class="col-sm-3">
+                      <div class="form-group">
+                        <label>Custom Select Disabled</label>
+                        <select class="custom-select">
+                          <option>option 1</option>
+                          <option>option 2</option>
+                          <option>option 3</option>
+                          <option>option 4</option>
+                          <option>option 5</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <!-- select -->
+                      <div class="form-group">
+                        <button class="btn btn-block btn-default">Filter</button>
+                      </div>
+                    </div>
+                    
+                  </div>
+
+
+                  <div class="form-group">
+                  </div>
+                </form>
+              </div>
+              <!-- /.card-body -->
+            </div>
+	<!---->
 
 	<div class="row">
 
