@@ -29,6 +29,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <link rel="stylesheet" href="{{ asset("/bower_components/admin-lte/plugins/datatables-bs4/css/dataTables.bootstrap4.css") }}">
 
 
+   <!-- Select2 -->
+  <link rel="stylesheet" href="{{ asset("/bower_components/admin-lte/plugins/select2/css/select2.min.css") }}">
+  <link rel="stylesheet" href="{{ asset("/bower_components/admin-lte/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css") }}">
+
+
+
   <!-- jQuery -->
   <script src="{{ asset ("/bower_components/admin-lte/plugins/jquery/jquery.min.js") }}"></script>
 
@@ -243,6 +249,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <script src="{{ asset ("/bower_components/admin-lte/plugins/datatables-bs4/js/dataTables.bootstrap4.js") }}"></script>
 
 
+<!-- Select2 -->
+<script src="{{ asset ("/bower_components/admin-lte/plugins/select2/js/select2.full.min.js") }}"></script>
+
+
 
 <!-- SweetAlert2 -->
 <script src="{{ asset ("/bower_components/admin-lte/plugins/sweetalert2/sweetalert2.min.js") }}"></script>
@@ -261,7 +271,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <!-- page script -->
 <script>
   $(function () {
-    /*$("#example1").DataTable();
+    $("#example1").DataTable();
     $('#example2').DataTable({
       "paging": true,
       "lengthChange": false,
@@ -269,12 +279,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
       "ordering": true,
       "info": true,
       "autoWidth": false,
-    });*/
+    });
 
 
 
     // Setup - add a text input to each footer cell
-    $('#example1 thead tr').clone(true).appendTo( '#example1 thead' );
+   /* $('#example1 thead tr').clone(true).appendTo( '#example1 thead' );
     $('#example1 thead tr:eq(1) th').each( function (i) {
         var title = $(this).text();
 
@@ -298,7 +308,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     var table = $('#example1').DataTable( {
         orderCellsTop: true,
         fixedHeader: true
-    } );
+    } );*/
 
 
   });

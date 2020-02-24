@@ -12,7 +12,7 @@ class BlogController extends Controller
 
     public function __construct()
     {
-        //echo Helper::shout('now i\'m using my helper class in a controller!!');
+        
     }
 
     /**
@@ -22,18 +22,34 @@ class BlogController extends Controller
      */
     public function index()
     {
-       
-        if (isset($_GET['fl'])) {
-            $filter_by = $_GET['fl'];
-            $query = DB::table('blogs');
-            $query = $query->where('id', 'like', $filter_by);
-            $blogs = $query->get();
-        }else{
-            $blogs = Blog::All();
-        }
         
+        $query = DB::table('blogs');
+
+        if (isset($_GET['fl'])) {
+
+            if (!empty($_GET['id'])) {
+                $query = $query->where('id', 'like', $_GET['id']);
+            }
+
+            if (!empty($_GET['title'])) {
+                $query = $query->where('title', 'like', $_GET['title']);
+            }
+
+            if (!empty($_GET['status'])) {
+                $query = $query->where('status', 'like', $_GET['status']);
+            }
+            
+            $blogs = $query->get();
+
+        }else{
+
+            $blogs = Blog::All();
+
+        }
+
         return view('blog.index',compact('blogs'));
     }
+
 
     /**
      * Show the form for creating a new resource.
