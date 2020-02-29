@@ -75,12 +75,45 @@
                 </div>
               </div>
 
-              <div class="form-group">
-        <label for="author">Cover:</label>
-        <input type="file" class="form-control" name="bookcover"/>
-    </div>
+      
+              <div class="row">
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label for="author">Cover:</label>
+                    <input type="file" class="form-control" name="bookcover" accept="image/*" onchange="loadFile_left(event)"/>
+                    <input type="hidden" name="file_remove" id="file_remove">
 
-              <input type="hidden" name="image" id="image" value="imgppp">
+                    <div id="image_box">
+                      @if($blog->image !='iiiii')   
+                        <img id="output_left" style="width:95px;" src="{{ url('uploads', $blog->image) }}">    
+                        <a href="javascript://" class="file_remove_img">Remove</a>
+                      @else   
+                        <img id="output_left" style="width:95px;" src="{{ url('uploads', $blog->image) }}">    
+                      @endif
+                    </div>
+
+
+                    <script>
+                      var loadFile_left = function(event) {
+                        var output_left = document.getElementById('output_left');
+                        output_left.src = URL.createObjectURL(event.target.files[0]);
+
+                        var img_src = URL.createObjectURL(event.target.files[0]);
+
+                        document.getElementById('image_box').innerHTML '<img src="'+img_src+'" style="width:95px;">';
+                      };
+
+                      jQuery(document).ready(function(){
+                         jQuery(document).on('click', ".file_remove_img", function(){ alert('file_remove_img');
+                            jQuery('#file_remove').val('file_remove_img');
+                            jQuery('#output_left').attr('src', '');
+                         });
+                      });
+                    </script>
+
+                  </div>
+                </div>
+              </div>
 
 
               <div class="row">
