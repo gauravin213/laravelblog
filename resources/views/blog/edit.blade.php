@@ -27,10 +27,14 @@
 
           <div class="card-body">
 
-              <form class="form-horizontal" role="form" method="POST" action="{{ route('blog.update', ['id' => $blog->id]) }}" >
+              <form class="form-horizontal" role="form" method="POST" action="{{ route('blog.update', ['id' => $blog->id]) }}" enctype="multipart/form-data">
 
                 {{ csrf_field() }}
                 {{ method_field('PUT')}}
+
+
+              <input type="hidden" name="author" id="author" value="1">
+
 
               <div class="row">
                 <div class="col-sm-6">
@@ -40,6 +44,16 @@
                   </div>
                 </div>
               </div>
+
+              <div class="row">
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label>slug</label>
+                    <input type="text" name="slug" id="slug" class="form-control" value="{{ $blog->slug}}">
+                  </div>
+                </div>
+              </div>
+
               <div class="row">
                 <div class="col-sm-6">
                   <div class="form-group">
@@ -48,6 +62,27 @@
                   </div>
                 </div>
               </div>
+
+
+
+              <div class="row">
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label>Category</label>
+                    <input type="hidden" name="post_id" value="{{ $blog->id}}">
+                    {{Helper::get_post_categories2($blog->category_id)}}
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+        <label for="author">Cover:</label>
+        <input type="file" class="form-control" name="bookcover"/>
+    </div>
+
+              <input type="hidden" name="image" id="image" value="imgppp">
+
+
               <div class="row">
                 <div class="col-sm-6">
                   <div class="form-group">
@@ -59,6 +94,8 @@
                     </div>
                 </div>
               </div>
+
+              
 
               <div class="row">
                 <div class="col-sm-2">

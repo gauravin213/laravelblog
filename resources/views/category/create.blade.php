@@ -20,12 +20,8 @@
             <h3 class="card-title">General Elements</h3>
           </div>
           <div class="card-body">
-            <form class="form-horizontal" role="form" method="POST" action="{{ route('blog.store') }}">
+            <form class="form-horizontal" role="form" method="POST" action="{{ route('category.store') }}">
               {{ csrf_field() }}
-
-
-              <input type="hidden" name="author" id="author" value="1">
-
 
               <div class="row">
                 <div class="col-sm-6">
@@ -45,7 +41,6 @@
                 </div>
               </div>
 
-
               <div class="row">
                 <div class="col-sm-6">
                   <div class="form-group">
@@ -58,24 +53,18 @@
               <div class="row">
                 <div class="col-sm-6">
                   <div class="form-group">
-                    <label>Category</label>
-                    {{Helper::get_post_categories2('')}}
+                    <label>parent</label>
+                    <input type="text" name="parent" id="parent" class="form-control">
                   </div>
                 </div>
               </div>
 
-
-               <input type="hidden" name="image" id="image" value="imgpp">
-
               <div class="row">
                 <div class="col-sm-6">
                   <div class="form-group">
-                      <label>Status</label>
-                      <select class="form-control" name="status" id="status">
-                        <option value="publish">Publish</option>
-                        <option value="draft">Draft</option>
-                      </select>
-                    </div>
+                    <label>count</label>
+                    <input type="text" name="count" id="count" class="form-control">
+                  </div>
                 </div>
               </div>
 

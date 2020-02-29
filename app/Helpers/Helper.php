@@ -2,6 +2,8 @@
 
 namespace App\Helpers;
 use App\Blog;
+use App\Category;
+use App\CategoryRelationship;
 use Illuminate\Support\Facades\DB;
 class Helper
 {
@@ -32,6 +34,61 @@ class Helper
         	});
         </script>
         <?php
+    }
+
+
+
+    public static function get_post_categories(){
+
+    /*DB::table('category_relationships')
+        ->where('post_id', $request->post_id)*/
+ 
+        $query = DB::table('categories');
+        $categories = $query->get();
+        ?>
+        <select class="custom-select" name="category_id" id="category_id">
+          <option value="">select</option>
+           <?php foreach ($categories as $data) { ?>
+            <option value="<?php echo $data->id;?>" ><?php echo $data->title;?></option>
+          <?php } ?>
+        </select>
+        <script type="text/javascript">
+          $(function () {
+            //$('#title').select2();
+            $("#category_id").select2({
+            theme: 'bootstrap4'
+          });
+          });
+        </script>
+        <?php
+    }
+
+
+
+    public static function get_post_categories2($cat_id){
+
+
+      $query = DB::table('categories');
+        $categories = $query->get();
+        ?>
+        <select class="custom-select" name="category_id" id="category_id">
+          <option value="">select</option>
+           <?php foreach ($categories as $data) { 
+            $ifselected = ($cat_id == $data->id) ? "selected='selected'" : "";
+            ?>
+            <option value="<?php echo $data->id;?>" <?php echo $ifselected;?> ><?php echo $data->title;?></option>
+          <?php } ?>
+        </select>
+        <script type="text/javascript">
+          $(function () {
+            //$('#title').select2();
+            $("#category_id").select2({
+            theme: 'bootstrap4'
+          });
+          });
+        </script>
+        <?php
+
     }
 
 

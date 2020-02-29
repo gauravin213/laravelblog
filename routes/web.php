@@ -20,13 +20,14 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 
+
+
+
 Route::get('admin', function () {
     return view('admin');
 });
 
-
-/*Route::get('/blog', 'BlogController@index')->name('blog');
-Route::get('/create', 'BlogController@create')->name('create');
-Route::get('/edit', 'BlogController@edit')->name('edit');*/
-
 Route::resource('blog','BlogController');
+Route::resource('category','CategoryController');
+
+Route::get('blog/category/{slug}', ['as' => 'category.single', 'uses' => 'CategoryController@getSingle'])->where('slug', '[\w\d\-\_]+');

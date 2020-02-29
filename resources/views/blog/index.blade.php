@@ -8,7 +8,7 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1 class="m-0 text-dark">Starter Page <a href="{{ route('blog.create') }}" class="btn btn-primary">Add</a> </h1>
+          <h1 class="m-0 text-dark">Blog Page <a href="{{ route('blog.create') }}" class="btn btn-primary">Add</a> </h1>
           
       			@if ($message = Session::get('success'))
       		    <div class="modal fade" id="modal-success">
@@ -97,8 +97,10 @@
             <table id="example1" class="table table-bordered table-striped">
               <thead>
               <tr>
-                <th>id</th>
-                <th>title</th>
+                <th>Id</th>
+                <th>Author</th>
+                <th>Title</th>
+                <th>Category</th>
                 <th>description</th>
                 <th>status</th>
                 <th>Action</th>
@@ -106,20 +108,23 @@
               </thead>
               <tbody>
 
-      		@foreach ($blogs as $blog)
-      		    <tr>
-      		        <td>{{ $blog->id }}</td>
-      		        <td>{{ $blog->title}}</td>
-      		        <td>{{ $blog->description}}</td>
-      		        <td>{{ $blog->status}}</td>
-      		        <td>
-      		          <a class="btn btn-primary" href="{{ route('blog.edit',$blog->id) }}">Edit</a>
-        						{!! Form::open(['method' => 'DELETE','route' => ['blog.destroy', $blog->id],'style'=>'display:inline']) !!}
-        						{!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
-        						{!! Form::close() !!}
-      		        </td>
-      		    </tr>
-      		@endforeach
+        		@foreach ($blogs as $blog)
+        		    <tr>
+        		        <td>{{ $blog->id }}</td>
+                    <td>{{ $blog->author}}</td>
+        		        <td>{{ $blog->title}}</td>
+                    <td>{{ $blog->category->title}}</td>
+        		        <td>{{ $blog->description}}</td>
+        		        <td>{{ $blog->status}}</td>
+        		        <td>
+        		          <a class="btn btn-primary" href="{{ route('blog.edit',$blog->id) }}">Edit</a>
+                      <a class="btn btn-primary" href="{{ route('blog.show',$blog->id) }}">View</a>
+          						{!! Form::open(['method' => 'DELETE','route' => ['blog.destroy', $blog->id],'style'=>'display:inline']) !!}
+          						{!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
+          						{!! Form::close() !!}
+        		        </td>
+        		    </tr>
+        		@endforeach
 
               </tbody>
             </table>
