@@ -20,7 +20,7 @@
             <h3 class="card-title">General Elements</h3>
           </div>
           <div class="card-body">
-            <form class="form-horizontal" role="form" method="POST" action="{{ route('blog.store') }}">
+            <form class="form-horizontal" role="form" method="POST" action="{{ route('blog.store') }}" enctype="multipart/form-data">
               {{ csrf_field() }}
 
 
@@ -65,7 +65,25 @@
               </div>
 
 
-               <input type="hidden" name="image" id="image" value="imgpp">
+              <div class="row">
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label for="author">Cover:</label>
+                    <input type="file" class="form-control" name="bookcover" accept="image/*" onchange="loadFile_left(event)"/>
+                    <div>
+                     <img id="output_left" style="width:95px;" src=""> 
+                     <script>
+                      var loadFile_left = function(event) {
+                        var output_left = document.getElementById('output_left');
+                        output_left.src = URL.createObjectURL(event.target.files[0]);
+                      };
+                    </script>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
 
               <div class="row">
                 <div class="col-sm-6">
