@@ -101,7 +101,16 @@ class BlogController extends Controller
         $blog->slug = $request->slug;
         $blog->category_id = $request->category_id;
         $blog->description = $request->description;
-        $blog->image = $request->image;
+        
+        $cover = $request->file('bookcover');
+        if (!empty($cover)) {
+             $extension = $cover->getClientOriginalExtension();
+             Storage::disk('public')->put($cover->getFilename().'.'.$extension,  File::get($cover));
+             $blog->image = $cover->getFilename().'.'.$extension; //$request->image;
+        }else{
+             $blog->image = 'iiiii';
+        }
+
         $blog->status = $request->status;
         $blog->save();
 
@@ -146,17 +155,30 @@ class BlogController extends Controller
     public function update(Request $request, Blog $blog)
     {   
 
-
-        $cover = $request->file('bookcover');
-        $extension = $cover->getClientOriginalExtension();
-        Storage::disk('public')->put($cover->getFilename().'.'.$extension,  File::get($cover));
-
         $blog->author = $request->author;
         $blog->title = $request->title;
         $blog->slug = $request->slug;
         $blog->category_id = $request->category_id;
         $blog->description = $request->description;
-        $blog->image = $cover->getFilename().'.'.$extension; //$request->image;
+
+        $cover = $request->file('bookcover');
+        if (!empty($cover)) {
+             $extension = $cover->getClientOriginalExtension();
+             Storage::disk('public')->put($cover->getFilename().'.'.$extension,  File::get($cover));
+             $blog->image = $cover->getFilename().'.'.$extension; //$request->image;
+        }
+
+        $file_remove = $request->file_remove;
+        if (!empty($file_remove) && $file_remove == 'file_remove_img') {
+            $blog->image = 'iiiii';
+        }
+
+
+
+       
+
+        
+       
         $blog->status = $request->status;
 
        /* $book->mime = $cover->getClientMimeType();
