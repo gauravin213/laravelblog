@@ -75,12 +75,42 @@
                 </div>
               </div>
 
-              <div class="form-group">
-        <label for="author">Cover:</label>
-        <input type="file" class="form-control" name="bookcover"/>
-    </div>
+      
+              <div class="row">
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label for="author">Cover:</label>
+                    <input type="file" id="upload_post_image" class="form-control" name="bookcover" accept="image/*">
+                    <input type="hidden" name="file_remove" id="file_remove">
 
-              <input type="hidden" name="image" id="image" value="imgppp">
+                    <div id="image_box">
+                      @if($blog->image !='iiiii')   
+                        <img id="output_left" style="width:95px;" src="{{ url('uploads', $blog->image) }}">    
+                        <a href="javascript://" class="file_remove_img">Remove</a>
+                      @endif
+                    </div>
+
+                    <script>
+                      jQuery(document).ready(function(){
+
+                         jQuery(document).on('click', ".file_remove_img", function(){ 
+                            jQuery('#file_remove').val('file_remove_img');
+                            jQuery('#output_left').remove();
+                            jQuery(this).remove();
+                         });
+
+
+                         jQuery(document).on('change', "#upload_post_image", function(event){ 
+                            var img_src = URL.createObjectURL(event.target.files[0]);
+                            jQuery('#image_box').html('<img src="'+img_src+'" style="width:95px;">');
+                            jQuery('#file_remove').val('');
+                         });
+                      });
+                    </script>
+
+                  </div>
+                </div>
+              </div>
 
 
               <div class="row">

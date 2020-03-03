@@ -20,7 +20,7 @@
             <h3 class="card-title">General Elements</h3>
           </div>
           <div class="card-body">
-            <form class="form-horizontal" role="form" method="POST" action="{{ route('blog.store') }}">
+            <form class="form-horizontal" role="form" method="POST" action="{{ route('blog.store') }}" enctype="multipart/form-data">
               {{ csrf_field() }}
 
 
@@ -65,7 +65,40 @@
               </div>
 
 
-               <input type="hidden" name="image" id="image" value="imgpp">
+              <div class="row">
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label for="author">Cover:</label>
+                    <input type="file" id="upload_post_image" class="form-control" name="bookcover" accept="image/*">
+                    <input type="hidden" name="file_remove" id="file_remove">
+
+                    <div id="image_box">
+                      <img id="output_left" style="width:95px;" src="">    
+                    </div>
+
+                    <script>
+                      jQuery(document).ready(function(){
+
+                         jQuery(document).on('click', ".file_remove_img", function(){ 
+                            jQuery('#file_remove').val('file_remove_img');
+                            jQuery('#image_box').remove();
+                            jQuery(this).remove();
+                         });
+
+                         jQuery(document).on('change', "#upload_post_image", function(event){ 
+                            var img_src = URL.createObjectURL(event.target.files[0]);
+                            jQuery('#image_box').html('<img src="'+img_src+'" style="width:95px;"><a href="javascript://" class="file_remove_img">Remove</a>');
+                            jQuery('#file_remove').val('');
+                         });
+
+                      });
+                    </script>
+
+                  </div>
+                </div>
+              </div>
+
+
 
               <div class="row">
                 <div class="col-sm-6">

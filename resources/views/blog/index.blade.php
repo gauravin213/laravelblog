@@ -98,6 +98,7 @@
               <thead>
               <tr>
                 <th>Id</th>
+                <th>Img</th>
                 <th>Author</th>
                 <th>Title</th>
                 <th>Category</th>
@@ -111,6 +112,7 @@
         		@foreach ($blogs as $blog)
         		    <tr>
         		        <td>{{ $blog->id }}</td>
+                    <td><img style="width:95px;" src="{{ url('uploads', $blog->image) }}"></td>
                     <td>{{ $blog->author}}</td>
         		        <td>{{ $blog->title}}</td>
                     <td>{{ $blog->category->title}}</td>
