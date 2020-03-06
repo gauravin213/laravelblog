@@ -7,6 +7,11 @@ use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -55,8 +60,9 @@ class CategoryController extends Controller
     public function show(Category $category)
     {   
 
-        /*$ppp = $category->blogs;
-        echo "<pre>"; print_r($ppp->toArray()); echo "</pre>";*/
+        /*$ppp = $category->posts;
+        echo "<pre>"; print_r($ppp->toArray()); echo "</pre>";
+        die();*/
 
         return view('category.show',compact('category'));
     }

@@ -7,7 +7,7 @@
   <div class="container-fluid">
     <div class="row mb-2">
       <div class="col-sm-6">
-        <h1 class="m-0 text-dark">Create Page</h1>
+        <h1 class="m-0 text-dark">Create Post</h1>
       </div>
     </div>
   </div>
@@ -20,7 +20,7 @@
             <h3 class="card-title">General Elements</h3>
           </div>
           <div class="card-body">
-            <form class="form-horizontal" role="form" method="POST" action="{{ route('blog.store') }}" enctype="multipart/form-data">
+            <form class="form-horizontal" role="form" method="POST" action="{{ route('post.store') }}" enctype="multipart/form-data">
               {{ csrf_field() }}
 
 
@@ -28,7 +28,7 @@
 
 
               <div class="row">
-                <div class="col-sm-6">
+                <div class="col-sm-12">
                   <div class="form-group">
                     <label>Title</label>
                     <input type="text" name="title" id="title" class="form-control">
@@ -37,7 +37,7 @@
               </div>
 
               <div class="row">
-                <div class="col-sm-6">
+                <div class="col-sm-12">
                   <div class="form-group">
                     <label>slug</label>
                     <input type="text" name="slug" id="slug" class="form-control">
@@ -47,7 +47,7 @@
 
 
               <div class="row">
-                <div class="col-sm-6">
+                <div class="col-sm-12">
                   <div class="form-group">
                     <label>Description</label>
                     <textarea class="form-control" rows="3" name="description" id="description"></textarea>
@@ -56,7 +56,7 @@
               </div>
 
               <div class="row">
-                <div class="col-sm-6">
+                <div class="col-sm-12">
                   <div class="form-group">
                     <label>Category</label>
                     {{Helper::get_post_categories2('')}}
@@ -69,6 +69,7 @@
                 <div class="col-sm-6">
                   <div class="form-group">
                     <label for="author">Cover:</label>
+
                     <input type="file" id="upload_post_image" class="form-control" name="bookcover" accept="image/*">
                     <input type="hidden" name="file_remove" id="file_remove">
 
@@ -93,6 +94,18 @@
 
                       });
                     </script>
+
+
+                    <!-- <input type="file" class="form-control" name="bookcover" accept="image/*" onchange="loadFile_left(event)"/> -->
+                    <div>
+                     <img id="output_left" style="width:95px;" src=""> 
+                     <script>
+                      var loadFile_left = function(event) {
+                        var output_left = document.getElementById('output_left');
+                        output_left.src = URL.createObjectURL(event.target.files[0]);
+                      };
+                    </script>
+                    </div>
 
                   </div>
                 </div>

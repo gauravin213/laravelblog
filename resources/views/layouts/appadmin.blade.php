@@ -34,6 +34,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <link rel="stylesheet" href="{{ asset("/bower_components/admin-lte/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css") }}">
 
 
+  <!-- summernote -->
+  <link rel="stylesheet" href="{{ asset("/bower_components/admin-lte/plugins/summernote/summernote-bs4.css") }}">
 
   <!-- jQuery -->
   <script src="{{ asset ("/bower_components/admin-lte/plugins/jquery/jquery.min.js") }}"></script>
@@ -193,11 +195,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <!-- Sidebar Menu -->
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+         
           <li class="nav-item has-treeview">
-            <a href="{{ route('blog.index') }}" class="nav-link">
+            <a href="{{ route('post.index') }}" class="nav-link">
               <i class="nav-icon fas fa-table"></i>
               <p>
-                Blog
+                Post
               </p>
             </a>
           </li>
@@ -207,6 +210,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
               <i class="nav-icon fas fa-table"></i>
               <p>
                 Category
+              </p>
+            </a>
+          </li>
+
+          <li class="nav-item has-treeview">
+            <a href="{{ route('user.index') }}" class="nav-link">
+              <i class="nav-icon fas fa-table"></i>
+              <p>
+                User
               </p>
             </a>
           </li>
@@ -274,6 +286,20 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 <!-- AdminLTE for demo purposes -->
 <script src="{{ asset ("/bower_components/admin-lte/dist/js/demo.js") }}"></script>
+
+
+<!-- Summernote -->
+<script src="{{ asset ("/bower_components/admin-lte/plugins/summernote/summernote-bs4.min.js") }}"></script>
+
+<!--editor-->
+<script>
+  $(function () {
+    // Summernote
+    $('#description').summernote({
+      height: 200
+    })
+  })
+</script>
 
 
 

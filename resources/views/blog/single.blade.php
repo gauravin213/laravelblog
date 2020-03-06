@@ -28,19 +28,16 @@
           <div class="col-lg-12">
 
 
-		    @foreach ($posts as $post)
-			<div class="card card-primary card-outline">
+		    <div class="card card-primary card-outline">
 		      <div class="card-header">
 		        <h5 class="card-title m-0">{{ $post->title }}</h5>
 		      </div>
 		      <div class="card-body">
-		        <h6 class="card-title">Published: {{ date('M j, Y', strtotime($post->created_at)) }}</h6>
-
-		        <p class="card-text">{{  substr($post->description, 0, 250) }}{{ strlen($post->description) > 250 ? '...' : ""  }}</p>
-		        <a href="{{ route('blog.single', $post->slug) }}" class="btn btn-primary">Go somewhere</a>
+		        <p>{!! $post->description !!}</p>
+		        <hr>
+				<p>Posted In: {{ $post->category->title }}</p>
 		      </div>
 		    </div>
-			@endforeach
 
            
           </div>

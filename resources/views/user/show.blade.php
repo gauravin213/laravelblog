@@ -24,25 +24,20 @@
             <h3 class="card-title">General Elements</h3>
           </div>
 
-
           <div class="card-body">
 
-            @foreach($category->posts as $post)
-             
-              <div class="row">
+            <div class="row">
                 <div class="col-sm-6">
                   <div class="form-group">
-                    <h3>{{ $post->title }}</h3>
-                    <p>{{ $post->description }}</p>
-                    <p>{{ $post->id }}</p>
+                    <h3>{{ $user->name }}</h3>
+                    <p>{{ $user->email }}</p>
+                    <p>{{ $user->id }}</p>
+                     <p>{{ $user->user_type }}</p>
                   </div>
                 </div>
-              </div>
-
-            @endforeach
-             
+            </div>
+          
           </div>
-
 
         </div>
       </div> 

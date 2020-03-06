@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddExtraFieldToBlogsTable extends Migration
+class AddExtraFieldToPostsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class AddExtraFieldToBlogsTable extends Migration
      */
     public function up()
     {
-        Schema::table('blogs', function (Blueprint $table) {
+        Schema::table('posts', function (Blueprint $table) {
             $table->integer('category_id')->nullable()->after('slug')->unsigned();
         });
     }
@@ -25,7 +25,7 @@ class AddExtraFieldToBlogsTable extends Migration
      */
     public function down()
     {
-        Schema::table('blogs', function (Blueprint $table) {
+        Schema::table('posts', function (Blueprint $table) {
             $table->dropColumn('category_id');
         });
     }

@@ -29,9 +29,9 @@
             <div class="row">
                 <div class="col-sm-6">
                   <div class="form-group">
-                    <h3>{{ $blog->title }}</h3>
-                    <p>{{ $blog->description }}</p>
-                    <p>{{ $blog->id }}</p>
+                    <h3>{{ $post->title }}</h3>
+                    <p>{!! $post->description !!}</p>
+                    <p>{{ $post->id }}</p>
                   </div>
                 </div>
             </div>
