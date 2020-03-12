@@ -36,7 +36,10 @@
 		      <div class="card-body">
 		        <h6 class="card-title">Published: {{ date('M j, Y', strtotime($post->created_at)) }}</h6>
 
-		        <p class="card-text">{{  substr($post->description, 0, 250) }}{{ strlen($post->description) > 250 ? '...' : ""  }}</p>
+		        <p class="card-text">
+              {{  substr(strip_tags( $post->description ), 0, 250) }} 
+              {{ strlen(strip_tags( $post->description )) > 250 ? '...' : ""  }}
+            </p>
 		        <a href="{{ route('blog.single', $post->slug) }}" class="btn btn-primary">Go somewhere</a>
 		      </div>
 		    </div>
