@@ -56,6 +56,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <a href="{{ route('contact') }}" class="nav-link">Contact</a>
           </li>
 
+
+
+         
+
+          
+          
+          
+
          
           @guest
             <li class="nav-item">
@@ -99,6 +107,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
           </div>
         </form>
       </div>
+
+
+
+   
 
       <!-- Right navbar links -->
       <ul class="order-1 order-md-3 navbar-nav navbar-no-expand ml-auto">

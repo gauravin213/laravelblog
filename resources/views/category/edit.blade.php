@@ -18,7 +18,19 @@
 
 <section class="content">
 	<div class="row">
-		<div class="col-md-12">
+
+
+		<div class="col-3">
+
+      <!---->
+      @include('category.showcategory')
+      <!---->
+
+      </div>
+
+      <div class="col-9">
+
+
         <div class="card card-info">
           <div class="card-header">
             <h3 class="card-title">General Elements</h3>
@@ -91,10 +103,6 @@
       </div> 
   </div>
 </section>
-
-
-
-
 </div>
 
 @endsection

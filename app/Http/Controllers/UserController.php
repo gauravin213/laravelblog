@@ -5,13 +5,25 @@ namespace App\Http\Controllers;
 use App\User;
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Facades\Auth;
+
 class UserController extends Controller
 {
     
+    private $userId;
 
     public function __construct()
     {
-        $this->middleware('auth');
+       $this->middleware(function ($request, $next) {
+
+            $role = $this->userId = Auth::user()->user_type;
+
+            if ($role != 'admin') {
+                abort(404,"Sorry, You can do this actions");
+            }
+
+            return $next($request);
+        });
     }
 
     /**

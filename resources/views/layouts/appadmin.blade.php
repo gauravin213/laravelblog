@@ -40,6 +40,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- jQuery -->
   <script src="{{ asset ("/bower_components/admin-lte/plugins/jquery/jquery.min.js") }}"></script>
 
+
+  <!--jstree-->
+  <link rel="stylesheet" href="{{ asset ("/bower_components/admin-lte/jstree/proton/style.css") }}" />
+  <script src="{{ asset ("/bower_components/admin-lte/jstree/jstree.min.js") }}"></script>
+
  
 
 

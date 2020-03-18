@@ -44,3 +44,14 @@ Route::get('/blog', 'BlogController@getIndex')->name('blog');
 Route::get('blog/{slug}', ['as' => 'blog.single', 'uses' => 'BlogController@getSingle'])->where('slug', '[\w\d\-\_]+');
 
 Route::get('blog/category/{slug}', ['as' => 'category.single', 'uses' => 'CategoryController@getSingle'])->where('slug', '[\w\d\-\_]+');
+
+
+
+//Ajax
+Route::get('ajaxRequest', 'CategoryController@ajaxRequest');
+Route::post('ajaxRequest', 'CategoryController@ajaxRequestPost');
+Route::get('getTreeData', 'CategoryController@getTreeData');
+
+
+Route::get('ajaxeditirlRequest', 'CategoryController@ajaxeditirlRequest');
+Route::post('ajaxeditirlRequest', 'CategoryController@ajaxeditirlRequestPost');

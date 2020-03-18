@@ -12,8 +12,29 @@ use Illuminate\Support\Facades\File;
 
 use Gate;
 
+use Illuminate\Support\Facades\Auth;
+
 class PostController extends Controller
 {
+
+
+    private $userId;
+
+    public function __construct()
+    {
+       $this->middleware(function ($request, $next) {
+
+            $role = $this->userId = Auth::user()->user_type;
+
+            if ($role != 'admin') {
+                abort(404,"Sorry, You can do this actions");
+            }
+
+            return $next($request);
+        });
+    }
+
+
     /**
      * Display a listing of the resource.
      *
@@ -21,6 +42,11 @@ class PostController extends Controller
      */
     public function index()
     {
+
+        /*$user = Auth::user();
+        echo '<pre>'; print_r($user->toArray()); echo "</pre>";*/
+
+
         /*if(!\Gate::allows('isAdmin')){
             abort(404,"Sorry, You can do this actions");
         }*/

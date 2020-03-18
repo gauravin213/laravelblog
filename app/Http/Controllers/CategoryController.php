@@ -4,12 +4,28 @@ namespace App\Http\Controllers;
 
 use App\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
+use Illuminate\Support\Facades\Auth;
 
 class CategoryController extends Controller
-{
+{   
+
+
+    private $userId;
+
     public function __construct()
     {
-        $this->middleware('auth');
+       $this->middleware(function ($request, $next) {
+
+            $role = $this->userId = Auth::user()->user_type;
+
+            if ($role != 'admin') {
+                abort(404,"Sorry, You can do this actions");
+            }
+
+            return $next($request);
+        });
     }
 
     /**
@@ -116,4 +132,78 @@ class CategoryController extends Controller
         return redirect()->route('category.index')
                         ->with('success','Category deleted successfully');
     }
+
+
+    //Ajax
+    public function ajaxRequest(){
+
+        return view('ajaxRequest');
+
+    }
+
+    public function ajaxRequestPost(Request $request){
+
+        $input = $request->all();
+
+
+        DB::table('categories')
+        ->where('id', $request->child_node)  
+        ->limit(1) 
+        ->update(array('parent' => $request->parent_node));
+
+        $pppp = array(
+            'response' => 'xyz',
+            'parent_node' => $request->parent_node,
+            'child_node' => $request->child_node
+        );
+
+        return response()->json($pppp);
+
+    }
+
+    public function getTreeData(){
+
+
+        $categories = Category::All();
+
+        $cat_data = $categories->toArray();
+
+        foreach ($cat_data as $valData) {
+
+            if ($valData['parent'] == '#' || $valData['parent'] == 0 || $valData['parent'] == '0') {
+                $parent = '#';
+            }else{
+                $parent = $valData['parent'];
+            }
+           $data[] = array('id' => $valData['id'], 'parent' => $parent, 'text' => $valData['title']);
+        }
+
+        return response()->json($data);
+
+    }
+
+
+
+    public function ajaxeditirlRequest(){
+
+        return view('ajaxeditirlRequest');
+
+    }
+
+    public function ajaxeditirlRequestPost(Request $request){
+
+        $input = $request->all();
+
+        $pppp = array(
+            'response' => 'xyz',
+            'url' =>  '/category/1/edit'
+        );
+
+        return response()->json($pppp);
+
+    }
+    
+
+
+
 }

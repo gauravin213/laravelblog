@@ -6,6 +6,10 @@
 <div class="content-wrapper">
 
 
+   <div>
+         {{ Helper::get_post_category_menu()}}
+      </div>
+
 
 <!-- Content Header (Page header) -->
     <div class="content-header">
